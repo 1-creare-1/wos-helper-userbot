@@ -11,8 +11,18 @@ SERVER = '616089055532417036'
 
 COOLDOWN_BETWEEN_UNIQUE_RESPONSES = 30
 
-def broken(object):
-    return [f'{object}.*?work',f'{object}.*?broken',f'{object}.*?not']
+def broken(*objects):
+    out = []
+    for object in objects:
+        out += [
+            f'{object}.*?work',
+            f'{object}.*?broken',
+            f'{object}.*?not',
+            f'{object}.*?wrong',
+            f"why.*?{object}"
+        ]
+    return out
+
 RESPONSES = [
     # (['<@468384658653184040>'], 'goober :3'), # creare
     # (['<@672930748684173352>'], 'Hexcede is very busy and instead of bothering him you can ask questions in <#1050351736243621948> channel and report bugs in https://github.com/Eggs-D-Studios/wos-issues/issues'),
@@ -23,24 +33,24 @@ RESPONSES = [
     ([r'ping1', r'ping2'], 'pong'),
 
     # FAQ from #faq chanel
-    (broken('blade'), "Blades aren't broken, they require at least 10 studs per second of speed, and deal damage based on relative durability and speed, the model builder has a button for this, hammer tool has Modify"),
-    (broken('button'), "Buttons aren't broken, they are components, the model builder has a button for this"),
-    (broken('door'), "Doors are not removed, they are components, the model builder has a button for this, hammer tool has Modify"),
-    (broken('refin'), "The refinery is not broken, the wire cache is (I said this would happen)"),
-    (broken(r'power.*?cell'), "PowerCells are not broken, the wire cache is (I said this would happen)"),
-    (broken('warp'), "Warping is not broken, you configured the coordinates wrong or are not sitting in a seat"),
-    (broken('teleport'), "Teleporter is not broken, the hitbox was too high in the air and has been fixed"),
-    (broken('heater'), "Heaters are not broken, they are slow"),
-    (broken('cooler'), "Coolers are not broken, they are slow"),
-    (broken('hammer'), "The hammer tool is not broken, it was fixed now"),
-    (broken('extractor'), "Extractor is not broken, configure your bin"),
-    (broken('mb')+broken('model')+broken('builder')+broken('load'), "The main model builder is not out of date, the staging model builder is out of date, use the main model builder for the main game now"),
+    (broken('blade'), "> Blades aren't broken, they require at least 10 studs per second of speed, and deal damage based on relative durability and speed, the model builder has a button for this, hammer tool has Modify\n\\-Hexcede"),
+    (broken('button'), "> Buttons aren't broken, they are components, the model builder has a button for this\n\\-Hexcede"),
+    (broken('door'), "> Doors are not removed, they are components, the model builder has a button for this, hammer tool has Modify\n\\-Hexcede"),
+    (broken('refin'), "> The refinery is not broken, the wire cache is (I said this would happen)\n\\-Hexcede"),
+    (broken(r'power.*?cell'), "> PowerCells are not broken, the wire cache is (I said this would happen)\n\\-Hexcede"),
+    (broken('warp')+broken('hyperdrive'), "> Warping is not broken, you configured the coordinates wrong or are not sitting in a seat\n\\-Hexcede"),
+    (broken('teleport'), "> Teleporter is not broken, the hitbox was too high in the air and has been fixed\n\\-Hexcede"),
+    (broken('heater'), "> Heaters are not broken, they are slow\n\\-Hexcede"),
+    (broken('cooler'), "> Coolers are not broken, they are slow\n\\-Hexcede"),
+    (broken('hammer'), "> The hammer tool is not broken, it was fixed now\n\\-Hexcede"),
+    (broken('extractor'), "> Extractor is not broken, configure your bin\n\\-Hexcede"),
+    (broken('mb')+broken('model')+broken('builder')+broken('load'), "> The main model builder is not out of date, the staging model builder is out of date, use the main model builder for the main game now\n\\-Hexcede"),
 
-    ([r'void.*?ship',r'ship.*?void'], "Ships were never voided they just didn't load, go visit the region they were in and they will be there"),
-    # ([r'',], "The initial warp duping bug was already fixed, the one that existed in the old game has also been fixed and has nothing to do with the initial warp dupe from immediately after wipe"),
-    # ([r'',], "Nothing you are seeing that you think is part shift is part shift, however there are issues with welds that I am aware of please stop pestering me about it"),
-    # ([r'',], "Nothing happened to Thrusters or IonRockets, they were updated to use the new Roblox constraints because the old ones literally crash the game because of a Roblox bug that I have zero control over"),
-    # ([r'',], "Extractors don't cool, the heat is just moving to where the items are due to legacy behaviour"),
+    ([r'void.*?ship',r'ship.*?void'], "> Ships were never voided they just didn't load, go visit the region they were in and they will be there\n\\-Hexcede"),
+    ([r'warp.*?dupe',r'dupe.*?warp',r'hyperdrive.*?dupe',r'dupe.*?hyperdrive'], "> The initial warp duping bug was already fixed, the one that existed in the old game has also been fixed and has nothing to do with the initial warp dupe from immediately after wipe\n\\-Hexcede"),
+    ([r'part shift',], "> Nothing you are seeing that you think is part shift is part shift, however there are issues with welds that I am aware of please stop pestering me about it\n\\-Hexcede"),
+    ([broken('thrust','ion','rocket')], "> Nothing happened to Thrusters or IonRockets, they were updated to use the new Roblox constraints because the old ones literally crash the game because of a Roblox bug that I have zero control over\n\\-Hexcede"),
+    ([r'heat.*?extract',r'extract.*?heat'], "> Extractors don't cool, the heat is just moving to where the items are due to legacy behaviour\n\\-Hexcede"),
     
 ]
 
