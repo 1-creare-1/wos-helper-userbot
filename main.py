@@ -3,6 +3,7 @@ import discum
 import re
 import time
 import os
+import random
 
 load_dotenv()
 
@@ -19,9 +20,15 @@ def broken(*objects):
             f'{object}.*?broken',
             f'{object}.*?not',
             f'{object}.*?wrong',
+            f'{object}.*?anymore',
             f"why.*?{object}"
         ]
     return out
+
+EMOJIES = [
+    "shh:879908104400146524",
+    "carbonmonoxide:914605437163307089"
+]
 
 RESPONSES = [
     # (['<@468384658653184040>'], 'goober :3'), # creare
@@ -30,7 +37,7 @@ RESPONSES = [
     ([r'<@672930748684173352>.*?add'], "Please use https://github.com/Eggs-D-Studios/wos-issues/issues for suggestions"),
 
     ([r'how.*?bug', r'report.*?bug', r'bug report', r'report bug', r'found bug'], 'You can report bugs [here](https://github.com/Eggs-D-Studios/wos-issues/issues)'),
-    ([r'ping1', r'ping2'], 'pong'),
+    (['ping'], 'pong'),
 
     # FAQ from #faq chanel
     (broken('blade'), "> Blades aren't broken, they require at least 10 studs per second of speed, and deal damage based on relative durability and speed, the model builder has a button for this, hammer tool has Modify\n\\-Hexcede"),
@@ -49,9 +56,11 @@ RESPONSES = [
     ([r'void.*?ship',r'ship.*?void'], "> Ships were never voided they just didn't load, go visit the region they were in and they will be there\n\\-Hexcede"),
     ([r'warp.*?dupe',r'dupe.*?warp',r'hyperdrive.*?dupe',r'dupe.*?hyperdrive'], "> The initial warp duping bug was already fixed, the one that existed in the old game has also been fixed and has nothing to do with the initial warp dupe from immediately after wipe\n\\-Hexcede"),
     ([r'part shift',], "> Nothing you are seeing that you think is part shift is part shift, however there are issues with welds that I am aware of please stop pestering me about it\n\\-Hexcede"),
-    ([broken('thrust','ion','rocket')], "> Nothing happened to Thrusters or IonRockets, they were updated to use the new Roblox constraints because the old ones literally crash the game because of a Roblox bug that I have zero control over\n\\-Hexcede"),
+    (broken('thrust','ion','rocket'), "> Nothing happened to Thrusters or IonRockets, they were updated to use the new Roblox constraints because the old ones literally crash the game because of a Roblox bug that I have zero control over\n\\-Hexcede"),
     ([r'heat.*?extract',r'extract.*?heat'], "> Extractors don't cool, the heat is just moving to where the items are due to legacy behaviour\n\\-Hexcede"),
-    
+
+    # silly
+    (['bug'], lambda channel, message: bot.addReaction(channel, message, random.choice(EMOJIES))),
 ]
 
 FOOTER = "\n-# This is an automated message and I have no affiliation with the developers or admins. My responses may not be 100% accurate."
@@ -78,13 +87,20 @@ def helloworld(resp):
 
         if guildID == SERVER:
             for response in RESPONSES:
-                if response[1] in last_response_time and time.time() - last_response_time[response[1]] < COOLDOWN_BETWEEN_UNIQUE_RESPONSES:
+                if type(response[1]) is str and response[1] in last_response_time and time.time() - last_response_time[response[1]] < COOLDOWN_BETWEEN_UNIQUE_RESPONSES:
                     continue
                 for pattern in response[0]:
                     if re.search(pattern, content.lower()):
                         last_response_time[response[1]] = time.time()
                         print(f"Responding to {m['author']['username']}")
-                        bot.reply(channelID, messageid, response[1]+FOOTER)
+
+                        if type(response[1]) is str:
+                            bot.reply(channelID, messageid, response[1]+FOOTER)
+                        else:
+                            response[1](channelID, messageid)
+                        
+                        # Prevent multiple of the same response if multiple matches
+                        break
         # print("> guild {} channel {} | {}#{}: {}".format(guildID, channelID, username, discriminator, content))
 
 bot.gateway.run(auto_reconnect=True)
