@@ -44,11 +44,11 @@ RESPONSES = [
     
 ]
 
-FOOTER = r"\n-# This is an automated message and I have no affiliation with the developers or admins. My responses may not be 100% accurate."
+FOOTER = "\n-# This is an automated message and I have no affiliation with the developers or admins. My responses may not be 100% accurate."
 
 bot = discum.Client(token=TOKEN, log=False)
 
-bot.sendMessage("659130771667156992", "turned on")
+# bot.sendMessage("659130771667156992", "turned on")
 
 last_response_time = {}
 
