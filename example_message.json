@@ -1,0 +1,122 @@
+{
+    "type": "reply",
+    "tts": false,
+    "timestamp": "2024-08-24T18: 41: 00.985000+00: 00",
+    "referenced_message": {
+        "type": 0,
+        "tts": false,
+        "timestamp": "2024-08-24T18: 40: 14.627000+00: 00",
+        "pinned": false,
+        "mentions": [],
+        "mention_roles": [],
+        "mention_everyone": false,
+        "id": "1276974369087815760",
+        "flags": 0,
+        "embeds": [
+            {
+                "url": "https: //media.discordapp.net/attachments/1157240348737810514/1220799431218167908/attachment.gif",
+                "type": "image",
+                "thumbnail": {
+                    "width": 741,
+                    "url": "https://media.discordapp.net/attachments/1157240348737810514/1220799431218167908/attachment.gif?ex=66cb7611&is=66ca2491&hm=3b2ed0063dfce988fa306ec020e7d7bd25d8e37b9d17fca50f9b6845574f81b0&",
+                    "proxy_url": "https://media.discordapp.net/attachments/1157240348737810514/1220799431218167908/attachment.gif?ex=66cb7611&is=66ca2491&hm=3b2ed0063dfce988fa306ec020e7d7bd25d8e37b9d17fca50f9b6845574f81b0&",
+                    "placeholder_version": 1,
+                    "placeholder": "0AeCA4Iej8l7e0QPlqwQd5mXgHmAGSg=",
+                    "height": 391
+                },
+                "content_scan_version": 1
+            }
+        ],
+        "edited_timestamp": null,
+        "content": "https://media.discordapp.net/attachments/1157240348737810514/1220799431218167908/attachment.gif",
+        "components": [],
+        "channel_id": "659130771667156992",
+        "author": {
+            "username": "someoneidoknow",
+            "public_flags": 64,
+            "id": "476057232186933274",
+            "global_name": "Hekced",
+            "discriminator": "0",
+            "clan": null,
+            "avatar_decoration_data": null,
+            "avatar": "1fa1fe79e44fc433ee17ae6db48329bb"
+        },
+        "attachments": []
+    },
+    "pinned": false,
+    "nonce": "1276974560318586880",
+    "message_reference": {
+        "type": 0,
+        "message_id": "1276974369087815760",
+        "guild_id": "616089055532417036",
+        "channel_id": "659130771667156992"
+    },
+    "mentions": [
+        {
+            "username": "someoneidoknow",
+            "public_flags": 64,
+            "member": {
+                "roles": [
+                    "892201394604503072",
+                    "666657462363095050",
+                    "806284414051942410",
+                    "1086462241001459823",
+                    "968940962736906261",
+                    "695799067263107192"
+                ],
+                "premium_since": null,
+                "pending": false,
+                "nick": "Hekced",
+                "mute": false,
+                "joined_at": "2023-09-28T18:04:20.443000+00:00",
+                "flags": 0,
+                "deaf": false,
+                "communication_disabled_until": "2023-10-12T19:24:42.768000+00:00",
+                "banner": null,
+                "avatar": null
+            },
+            "id": "476057232186933274",
+            "global_name": "Hekced",
+            "discriminator": "0",
+            "clan": null,
+            "avatar_decoration_data": null,
+            "avatar": "1fa1fe79e44fc433ee17ae6db48329bb"
+        }
+    ],
+    "mention_roles": [],
+    "mention_everyone": false,
+    "id": "1276974563527233637",
+    "flags": 0,
+    "embeds": [],
+    "edited_timestamp": null,
+    "content": "reposted gif",
+    "components": [],
+    "channel_id": "659130771667156992",
+    "author": {
+        "username": "sommm.",
+        "public_flags": 128,
+        "id": "554717539935060028",
+        "global_name": "som",
+        "discriminator": "0",
+        "clan": null,
+        "avatar_decoration_data": null,
+        "avatar": null,
+        "roles": [
+            "892201394604503072",
+            "666657462363095050",
+            "806284414051942410",
+            "1244014890058907779"
+        ],
+        "premium_since": null,
+        "pending": false,
+        "nick": null,
+        "mute": false,
+        "joined_at": "2024-08-23T06:24:44.377000+00:00",
+        "flags": 0,
+        "deaf": false,
+        "communication_disabled_until": null,
+        "banner": null
+    },
+    "attachments": [],
+    "guild_id": "616089055532417036"
+}
