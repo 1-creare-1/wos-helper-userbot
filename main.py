@@ -69,6 +69,14 @@ def on_hegced_ping(m):
     if resp and resp != on_hegced_ping:
         bot.reply(m['channel_id'], m['id'], "You probably meant to ping the real Hexcede however instead of doing that you should use <https://github.com/Eggs-D-Studios/wos-issues/issues> or <#1050351736243621948>")
 
+def delete_reply(m):
+    if m['author']['id'] != "468384658653184040":
+        return
+    ref = m["message_reference"]
+    message = ref['message_id']
+    channel = ref['channel_id']
+    bot.deleteMessage(channel, message)
+
 RESPONSES = [
     # (['<@468384658653184040>'], 'goober :3'), # creare
     # (['<@672930748684173352>'], 'Hexcede is very busy and instead of bothering him you can ask questions in <#1050351736243621948> channel and report bugs in <https://github.com/Eggs-D-Studios/wos-issues/issues>'),
@@ -134,12 +142,13 @@ RESPONSES = [
     # (broken('door'), "> Doors are not removed, they are components, the model builder has a button for this, hammer tool has Modify\n\\-Hexcede"),
 
     # Redirect Hexcede pings to the Github
-    ([r'<@672930748684173352>.*?fix'], "Pinging Hexcede is not the correct way to report a bug, please use <https://github.com/Eggs-D-Studios/wos-issues/issues>"),
-    ([r'hex.*?fix'], "Please use <https://github.com/Eggs-D-Studios/wos-issues/issues> for bug reports"),
+    ([r'<@672930748684173352>.*?(fix|not work)'], "Pinging Hexcede is not the correct way to report a bug, please use <https://github.com/Eggs-D-Studios/wos-issues/issues>"),
+    ([r'hex.*?(fix|not work)'], "Please use <https://github.com/Eggs-D-Studios/wos-issues/issues> for bug reports"),
     ([r'<@672930748684173352>.*?add', r'hex.*?add'], "Please use <https://github.com/Eggs-D-Studios/wos-issues/issues> for suggestions"),
 
     # Commands
     (['!github'], '<https://github.com/Eggs-D-Studios/wos-issues/issues>'),
+    (['!delete'], delete_reply),
 
     ([':3'], lambda m: bot.addReaction(m['channel_id'], m['id'], "🐱")),
 ]
